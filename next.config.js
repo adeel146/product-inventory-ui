@@ -4,11 +4,26 @@ const nextConfig = {
     typedRoutes: true,
   },
   images: {
-    domains: ['images.unsplash.com', 'via.placeholder.com'],
+    // Allow any HTTPS image URL using remotePatterns
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "images.unsplash.com",
+      },
+      {
+        protocol: "https",
+        hostname: "via.placeholder.com",
+      },
+      {
+        // Allow any HTTPS hostname for user-provided URLs
+        protocol: "https",
+        hostname: "**",
+      },
+    ],
   },
   eslint: {
-    dirs: ['src', 'app', 'components', 'lib', 'types'],
+    dirs: ["src", "app", "components", "lib", "types"],
   },
-}
+};
 
-module.exports = nextConfig
+module.exports = nextConfig;
